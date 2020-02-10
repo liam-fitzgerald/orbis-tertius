@@ -5,13 +5,13 @@ export class UpdateReducer {
     reduce(json, state) {
         let data = _.get(json, 'update', false);
         if (data) {
-            this.reduceInbox(_.get(data, 'inbox', false), state);
+            this.reduceDocs(_.get(data, 'docs', false), state);
         }
     }
 
-    reduceInbox(inbox, state) {
-        if (inbox) {
-            state.inbox = inbox;
+    reduceDocs(docs, state) {
+        if (docs) {
+            state.docs = {...docs, ...state.docs};
         }
     }
 }
